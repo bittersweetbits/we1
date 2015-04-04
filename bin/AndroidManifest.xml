@@ -35,21 +35,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        
         <!-- The Main/Home Activity(has no parent activity) -->
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
         </activity>
         
-        <!-- A child of MainActivity -->
         <activity
             android:name=".Map"
-            android:label="@string/title_activity_map"
-            android:parentActivityName="com.example.we.MainActivity" >
-            <meta-data 
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.we.MainActivity"/>
+            android:label="@string/title_activity_map">"
+            
         </activity>
+        
     </application>
 
 </manifest>
