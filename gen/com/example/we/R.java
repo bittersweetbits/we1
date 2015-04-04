@@ -1639,6 +1639,7 @@ containing a value of this type.
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020035;
         public static final int abc_textfield_search_material=0x7f020036;
         public static final int ic_launcher=0x7f020037;
+        public static final int wedding_icon=0x7f020038;
     }
     public static final class id {
         public static final int action_bar=0x7f0a0031;
@@ -1649,11 +1650,13 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f0a001f;
         public static final int action_bar_title=0x7f0a001e;
         public static final int action_context_bar=0x7f0a0032;
+        public static final int action_map=0x7f0a0041;
         public static final int action_menu_divider=0x7f0a0005;
         public static final int action_menu_presenter=0x7f0a0006;
         public static final int action_mode_bar=0x7f0a002e;
         public static final int action_mode_bar_stub=0x7f0a002d;
         public static final int action_mode_close_button=0x7f0a0020;
+        public static final int action_settings=0x7f0a0040;
         public static final int activity_chooser_view_content=0x7f0a0021;
         public static final int always=0x7f0a0014;
         public static final int beginning=0x7f0a001b;
@@ -1759,8 +1762,12 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030014;
         public static final int abc_simple_dropdown_hint=0x7f030015;
         public static final int activity_main=0x7f030016;
-        public static final int activity_splash=0x7f030017;
-        public static final int support_simple_spinner_dropdown_item=0x7f030018;
+        public static final int activity_map=0x7f030017;
+        public static final int activity_splash=0x7f030018;
+        public static final int support_simple_spinner_dropdown_item=0x7f030019;
+    }
+    public static final class menu {
+        public static final int menu_main=0x7f0d0000;
     }
     public static final class raw {
         public static final int wedding_event=0x7f050000;
@@ -1822,9 +1829,13 @@ containing a value of this type.
         /**  Content description for the Toolbar icon used to collapse an expanded action mode. [CHAR LIMIT=NONE] 
          */
         public static final int abc_toolbar_collapse_description=0x7f0b0004;
-        public static final int app_name=0x7f0b0010;
-        public static final int hello_world=0x7f0b0011;
-        public static final int title_activity_main=0x7f0b0012;
+        public static final int action_map=0x7f0b0016;
+        public static final int action_settings=0x7f0b0014;
+        public static final int app_name=0x7f0b0011;
+        public static final int hello_world=0x7f0b0012;
+        public static final int new_app_name=0x7f0b0010;
+        public static final int title_activity_main=0x7f0b0013;
+        public static final int title_activity_map=0x7f0b0015;
     }
     public static final class style {
         public static final int Animation_AppCompat_DropDownUp=0x7f0c00cf;
