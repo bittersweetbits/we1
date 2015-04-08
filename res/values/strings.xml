@@ -3,10 +3,30 @@
 
     <string name="new_app_name">Wedding</string>
     <string name="app_name">WE</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_main">Adam and Eve\'s Wedding</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_map">Map</string>
     <string name="action_map">Map</string>
+    <string name="wedding_brief">        A familial unmissable ceremononial event where 
+        Adam Winter and Eve Noel unite in marriage. 
+        The event will involve activities to engage 
+        toddlers to grown ups and of course the marital 
+        proclamation. The event is open to all, importantly
+        family and friends, though a brief note of attendance
+        will be required for venue safety regulations and catering.
+        It is on a first book first serve basis.</string>
+    <string name="date">SUNDAY, 21 JUN 2015 @16:00 GMT - 00:00</string>
+    <string name="venue_name">Huddersfield St Peters C of E Parish Church</string>
+    <string name="address">Byram Street, Huddersfield, West Yorkshire, HD1 1BU</string>
+    <string name="action_get_tickets">Get Tickets</string>
+    <string name="title_activity_ticket">Get Tickets</string>
+    <string name="ticket_form_info">Enter your details</string>
+    <string name="form_hint_forename">Enter your first name</string>
+    <string name="form_hint_surname">Enter your surname</string>
+    <string name="form_hint_phone">Enter your phone number</string>
+    <string name="form_hint_email">Enter your email address</string>
+    <string name="ticket_request_button">Get ticket</string>
+    <string name="hello_world">Hello world!</string>
+ 
 
 </resources>

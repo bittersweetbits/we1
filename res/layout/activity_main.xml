@@ -1,11 +1,33 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="${relativePackage}.${activityClass}" >
+    android:orientation="vertical" >
 
-    
-        
-		
-    
-</RelativeLayout>
+    <TextView
+        android:id="@+id/wedding_calendar_textview"
+        style="@style/date_layout"
+        android:drawableLeft="@drawable/date_icon"
+        android:drawableStart="@drawable/date_icon"
+        android:text="@string/date" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/wedding_brief_textview"
+        style="@style/main_text_layout"
+        android:text="@string/wedding_brief" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/venu_name_textview"
+        style="@style/clickable_text_layout"
+        android:text="@string/venue_name" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/address_textview"
+        style="@style/clickable_text_layout"
+        android:text="@string/address" >
+    </TextView>
+
+</LinearLayout>

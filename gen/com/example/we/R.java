@@ -1547,6 +1547,13 @@ containing a value of this type.
  Default text size for action bar title.
          */
         public static final int abc_text_size_title_material_toolbar=0x7f080017;
+        /** 
+         Example customization of dimensions originally defined in res/values/dimens.xml
+         (such as screen margins) for screens with more than 820dp of available width. This
+         would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively).
+    
+         */
+        public static final int activity_horizontal_margin=0x7f080030;
         /**  The platform's desired fixed height for a dialog along the major axis
          (the screen is in portrait). This may be either a fraction or a dimension.
  The platform's desired fixed height for a dialog along the major axis
@@ -1638,8 +1645,11 @@ containing a value of this type.
         public static final int abc_textfield_search_activated_mtrl_alpha=0x7f020034;
         public static final int abc_textfield_search_default_mtrl_alpha=0x7f020035;
         public static final int abc_textfield_search_material=0x7f020036;
-        public static final int ic_launcher=0x7f020037;
-        public static final int wedding_icon=0x7f020038;
+        public static final int date_icon=0x7f020037;
+        public static final int ic_launcher=0x7f020038;
+        public static final int single_ticket_icon=0x7f020039;
+        public static final int ticket_icon=0x7f02003a;
+        public static final int wedding_icon=0x7f02003b;
     }
     public static final class id {
         public static final int action_bar=0x7f0a0031;
@@ -1650,14 +1660,16 @@ containing a value of this type.
         public static final int action_bar_subtitle=0x7f0a001f;
         public static final int action_bar_title=0x7f0a001e;
         public static final int action_context_bar=0x7f0a0032;
-        public static final int action_map=0x7f0a0041;
+        public static final int action_get_tickets=0x7f0a004a;
+        public static final int action_map=0x7f0a004c;
         public static final int action_menu_divider=0x7f0a0005;
         public static final int action_menu_presenter=0x7f0a0006;
         public static final int action_mode_bar=0x7f0a002e;
         public static final int action_mode_bar_stub=0x7f0a002d;
         public static final int action_mode_close_button=0x7f0a0020;
-        public static final int action_settings=0x7f0a0040;
+        public static final int action_settings=0x7f0a004b;
         public static final int activity_chooser_view_content=0x7f0a0021;
+        public static final int address_textview=0x7f0a0042;
         public static final int always=0x7f0a0014;
         public static final int beginning=0x7f0a001b;
         public static final int checkbox=0x7f0a0029;
@@ -1668,9 +1680,11 @@ containing a value of this type.
         public static final int disableHome=0x7f0a000d;
         public static final int dropdown=0x7f0a001a;
         public static final int edit_query=0x7f0a0033;
+        public static final int email_edittext=0x7f0a0048;
         public static final int end=0x7f0a001c;
         public static final int expand_activities_button=0x7f0a0022;
         public static final int expanded_menu=0x7f0a0028;
+        public static final int forename_edittext=0x7f0a0045;
         public static final int home=0x7f0a0000;
         public static final int homeAsUp=0x7f0a000e;
         public static final int icon=0x7f0a0026;
@@ -1682,6 +1696,7 @@ containing a value of this type.
         public static final int never=0x7f0a0017;
         public static final int none=0x7f0a000f;
         public static final int normal=0x7f0a000b;
+        public static final int phone_edittext=0x7f0a0047;
         public static final int progress_circular=0x7f0a0007;
         public static final int progress_horizontal=0x7f0a0008;
         public static final int radio=0x7f0a002b;
@@ -1701,11 +1716,17 @@ containing a value of this type.
         public static final int showTitle=0x7f0a0012;
         public static final int split_action_bar=0x7f0a0004;
         public static final int submit_area=0x7f0a003c;
+        public static final int surname_edittext=0x7f0a0046;
         public static final int tabMode=0x7f0a000c;
+        public static final int ticket_form_textview=0x7f0a0044;
+        public static final int ticket_request_button=0x7f0a0049;
         public static final int title=0x7f0a0027;
         public static final int up=0x7f0a0001;
         public static final int useLogo=0x7f0a0013;
-        public static final int videoView=0x7f0a003f;
+        public static final int venu_name_textview=0x7f0a0041;
+        public static final int videoView=0x7f0a0043;
+        public static final int wedding_brief_textview=0x7f0a0040;
+        public static final int wedding_calendar_textview=0x7f0a003f;
         public static final int withText=0x7f0a0018;
         public static final int wrap_content=0x7f0a0009;
     }
@@ -1762,12 +1783,13 @@ containing a value of this type.
         public static final int abc_search_view=0x7f030014;
         public static final int abc_simple_dropdown_hint=0x7f030015;
         public static final int activity_main=0x7f030016;
-        public static final int activity_map=0x7f030017;
-        public static final int activity_splash=0x7f030018;
+        public static final int activity_splash=0x7f030017;
+        public static final int activity_ticket=0x7f030018;
         public static final int support_simple_spinner_dropdown_item=0x7f030019;
     }
     public static final class menu {
         public static final int menu_main=0x7f0d0000;
+        public static final int ticket=0x7f0d0001;
     }
     public static final class raw {
         public static final int wedding_event=0x7f050000;
@@ -1829,24 +1851,38 @@ containing a value of this type.
         /**  Content description for the Toolbar icon used to collapse an expanded action mode. [CHAR LIMIT=NONE] 
          */
         public static final int abc_toolbar_collapse_description=0x7f0b0004;
-        public static final int action_map=0x7f0b0016;
-        public static final int action_settings=0x7f0b0014;
+        public static final int action_get_tickets=0x7f0b001a;
+        public static final int action_map=0x7f0b0015;
+        public static final int action_settings=0x7f0b0013;
+        public static final int address=0x7f0b0019;
         public static final int app_name=0x7f0b0011;
-        public static final int hello_world=0x7f0b0012;
+        public static final int date=0x7f0b0017;
+        public static final int form_hint_email=0x7f0b0020;
+        public static final int form_hint_forename=0x7f0b001d;
+        public static final int form_hint_phone=0x7f0b001f;
+        public static final int form_hint_surname=0x7f0b001e;
+        public static final int hello_world=0x7f0b0022;
         public static final int new_app_name=0x7f0b0010;
-        public static final int title_activity_main=0x7f0b0013;
-        public static final int title_activity_map=0x7f0b0015;
+        public static final int ticket_form_info=0x7f0b001c;
+        public static final int ticket_request_button=0x7f0b0021;
+        public static final int title_activity_main=0x7f0b0012;
+        public static final int title_activity_map=0x7f0b0014;
+        public static final int title_activity_ticket=0x7f0b001b;
+        public static final int venue_name=0x7f0b0018;
+        public static final int wedding_brief=0x7f0b0016;
     }
     public static final class style {
         public static final int Animation_AppCompat_DropDownUp=0x7f0c00cf;
         /** 
         Base application theme, dependent on API level. This theme is replaced
         by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
         
 
         Base application theme for API 11+. This theme completely replaces
@@ -2198,6 +2234,9 @@ containing a value of this type.
          */
         public static final int Widget_AppCompat_Toolbar=0x7f0c0037;
         public static final int Widget_AppCompat_Toolbar_Button_Navigation=0x7f0c0038;
+        public static final int clickable_text_layout=0x7f0c00fb;
+        public static final int date_layout=0x7f0c00fc;
+        public static final int main_text_layout=0x7f0c00fa;
     }
     public static final class styleable {
         /**  ============================================ 

@@ -23,29 +23,35 @@ public class BaseActivity extends  ActionBarActivity {
 			//openSettings should display the settings options
 			openSettings();
 			return true;
-		case R.id.action_map:
-			//openMap should display the map activity
-			openMap();
+		case R.id.action_get_tickets:
+			//open form to get tickets
+			Log.i("OnOptionsItemSelected is called", "get ticket button is pressed");
+			openTicket();
+			Log.i("OnOptionsItemSelected-->action_get_tickets", "openTicket() was called");
 			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 	}
 
-	/**
-	 * 	The user opens the Recent Apps window and switches from your app to another app. The activity in your app that's currently in the foreground is stopped. If the user returns to your app from the Home screen launcher icon or the Recent Apps window, the activity restarts.
-	 *	The user performs an action in your app that starts a new activity. The current activity is stopped when the second activity is created. If the user then presses the Back button, the first activity is restarted.
-	 *	The user receives a phone call while using your app on his or her phone.
-	 */
-	private void openMap()
+	
+	private void openSettings() 
 	{
-		Log.i(TAG, "openMap");
-		Intent i = new  Intent(this, Map.class);
-		startActivity(i);
-		onStop();
-	}
-	private void openSettings() {
 		//Create settings options:: see sub-menus
 		Log.i(TAG, "openSettings");
 	}
+	
+	private void openTicket()
+	{
+		Intent i = new Intent(this,TicketActivity.class );
+		this.startActivity(i);
+		this.finish();
+	}
+	
+	
+	
+	
+	
+	
+	
 }
