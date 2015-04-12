@@ -29,12 +29,22 @@ public class BaseActivity extends  ActionBarActivity {
 			openTicket();
 			Log.i("OnOptionsItemSelected-->action_get_tickets", "openTicket() was called");
 			return true;
+		case R.id.action_map:
+			//open map activity
+			openMap();
+			Log.i("OnOptionsItemsSelected","openMap()");
+			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}
 	}
 
 	
+	private void openMap() {
+		Intent i = new Intent(this,MapActivity.class );
+		this.startActivity(i);
+		this.finish();
+	}
 	private void openSettings() 
 	{
 		//Create settings options:: see sub-menus

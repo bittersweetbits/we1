@@ -1,7 +1,6 @@
 package com.example.we;
 
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 
 
@@ -23,6 +21,9 @@ public class TicketActivity extends BaseActivity implements OnClickListener{
 	private EditText email;
 	private Button requestTicket;
 	private BroadcastReceiver Email_Finished_Reciever;
+	private EditText etxtConfirm;
+	private Button btnConfirm;
+	private Bundle b;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,9 @@ public class TicketActivity extends BaseActivity implements OnClickListener{
 		this.email= (EditText) findViewById(R.id.email_edittext);
 		this.requestTicket = (Button) findViewById(R.id.ticket_request_button);
 		this.requestTicket.setOnClickListener(this);
+		this.etxtConfirm = (EditText) findViewById(R.id.confirm_code_edittext);
+		this.btnConfirm = (Button) findViewById(R.id.confirm_code_button);
+		this.btnConfirm.setOnClickListener(this);
 
 	}
 
@@ -45,8 +49,12 @@ public class TicketActivity extends BaseActivity implements OnClickListener{
 		case R.id.ticket_request_button:
 			submitRequest();
 			break;
+		case R.id.confirm_code_button:
+			confirm();
+			break;
 		}
 	}
+
 
 	private void submitRequest() 
 	{
@@ -59,16 +67,30 @@ public class TicketActivity extends BaseActivity implements OnClickListener{
 		if(Validator.validateLength(forename)&&Validator.validateLength(surname)&&Validator.validatePhone(phone)&&Validator.validateAddress(email))
 		{
 			Intent i = new Intent(this, EmailSenderIntentService.class);
+			Bundle person = new Bundle();
+			person.putString("forename", forename);
+			person.putString("surname", surname);
+			person.putLong("phone", Long.parseLong(phone));
+			person.putString("email", email);
+			
 			//use INTENT_INTO_SERVICE string (acts as key) and maps the user's email address (acts as value)
-			i.putExtra(EmailSenderIntentService.INTENT_INTO_SERVICE, email);
+			person.putString(EmailSenderIntentService.INTENT_INTO_SERVICE, email);
+			//i.putExtra(EmailSenderIntentService.INTENT_INTO_SERVICE, email);
+			//putting all the required info into a bundle and the bundle into the intent
+			i.putExtras(person);
 			startService(i);
 			Log.i("startEmailService", "email service was called");
+			
 		}
 		else
 		{
 			Log.i("TICKETACTIVITY", "Validations failed");
 		}
 	}
+
+	
+	
+	
 
 	@Override
 	public void onResume()
@@ -93,7 +115,21 @@ public class TicketActivity extends BaseActivity implements OnClickListener{
 		super.onPause();
 	}
 
-	
+	private void confirm() {
+		
+		b = this.getIntent().getExtras();
+		int realCode = b.getInt("code");
+		int inCode = Integer.parseInt(etxtConfirm.getText().toString());
+		if(realCode == inCode)
+		{
+			//match therefore add this person to the database
+			
+		}
+		else
+		{
+			Log.i("confirm", "codes do not match: real"+realCode + " input "+inCode);
+		}
+	}
 
 	
 
