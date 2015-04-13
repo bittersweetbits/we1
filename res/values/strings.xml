@@ -29,6 +29,7 @@
     <string name="confirm_code">CONFIRM CODE</string>
     <string name="confirm_code_hint">Check your email for the code</string>
     <string name="title_activity_code_confirm">CodeConfirmActivity</string>
-    <string name="hello_world">Hello world!</string>
+    <string name="start_location_hint">Enter a starter location</string>
+    <string name="load_direction">GET DIRECTIONS</string>
 
 </resources>
