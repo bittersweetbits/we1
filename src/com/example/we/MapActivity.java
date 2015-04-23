@@ -56,8 +56,6 @@ public class MapActivity extends FragmentActivity implements OnClickListener{
 		btnDirections = (Button) findViewById(R.id.load_direction_button);
 		btnDirections.setOnClickListener(this);
 		map = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
-		//Marker hamburg = map.addMarker(new MarkerOptions().position(HAMBURG).title("Hamburg"));
-		//Marker kiel = map.addMarker(new MarkerOptions().position(KIEL).title("Kiel").snippet("Kiel is cool").icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher)));
 		mrkoptChurch = new MarkerOptions().position(CHURCH).title("Adam & Eve's Wedding!").draggable(false);
 		map.addMarker(mrkoptChurch);
 		map.moveCamera(CameraUpdateFactory.newLatLngZoom(CHURCH, 21));
@@ -108,6 +106,7 @@ public class MapActivity extends FragmentActivity implements OnClickListener{
 			e.printStackTrace();
 		}
 		JSONObject j = new JSONObject();
+		//get LatLng coords into LatLng object
 		try {
 			j = new JSONObject(s.toString());
 			double lat = ((JSONArray)j.get("results")).getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getDouble("lat");

@@ -1,33 +1,55 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/wedding_calendar_textview"
-        style="@style/date_layout"
-        android:drawableLeft="@drawable/date_icon"
-        android:drawableStart="@drawable/date_icon"
-        android:text="@string/date" >
-    </TextView>
+    <LinearLayout
 
-    <TextView
-        android:id="@+id/wedding_brief_textview"
-        style="@style/main_text_layout"
-        android:text="@string/wedding_brief" >
-    </TextView>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/venu_name_textview"
-        style="@style/clickable_text_layout"
-        android:text="@string/venue_name" >
-    </TextView>
+        <TextView
+            android:id="@+id/wedding_calendar_textview"
+            style="@style/date_layout"
+            android:drawableLeft="@drawable/date_icon"
+            android:drawableStart="@drawable/date_icon"
+            android:text="@string/date" >
+        </TextView>
 
-    <TextView
-        android:id="@+id/address_textview"
-        style="@style/clickable_text_layout"
-        android:text="@string/address" >
-    </TextView>
+        <TextView
+            android:id="@+id/wedding_brief_textview"
+            style="@style/main_text_layout"
+            android:text="@string/wedding_brief" >
+        </TextView>
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/map_location_imageview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/map_location_content_description"
+            android:scaleType="center"
+            android:src="@drawable/map_location" />
+
+        <TextView
+            android:id="@+id/venu_name_textview"
+            style="@style/clickable_text_layout"
+            android:text="@string/venue_name" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/address_textview"
+            style="@style/clickable_text_layout"
+            android:text="@string/address" >
+        </TextView>
+
+        <Button
+            android:id="@+id/share_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/share" >
+        </Button>
+    </LinearLayout>
+
+</ScrollView>

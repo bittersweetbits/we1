@@ -1,5 +1,6 @@
 package com.example.we;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -8,12 +9,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class CodeConfirmActivity extends BaseActivity  implements OnClickListener {
 
 	private EditText etxtConfirm;
 	private Button btnConfirm;
 	private Bundle person;
+	public static final String CODE_CONFIRMED = "CODE_CONFIRMED";
+	private static final String CODE_CONFIRMED_ACTIVITY_TAG = "CODE_CONFIRMED_ACTIVITY";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,24 +28,8 @@ public class CodeConfirmActivity extends BaseActivity  implements OnClickListene
 		person = this.getIntent().getExtras();
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.code_confirm, menu);
-		return true;
-	}
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+	
 
 	@Override
 	public void onClick(View v) {
@@ -58,20 +46,34 @@ public class CodeConfirmActivity extends BaseActivity  implements OnClickListene
 		int usrCode = Integer.parseInt(etxtConfirm.getText().toString());
 		if(sysCode == usrCode)
 		{
-			//TODO: //match therefore add this person to the database
-			//from here: get all extra info from person (Bundle) and input them into a database of some sort-won't take too long
+			//code =  ""+ person.getInt("code");
+			//forename = person.getString("forename");
+			//surname = person.getString("surname");
+			//int type can only store 10 digits. easy fix was to just as 0 as a prefix to complete phone number
+			//phone = "0" + person.getLong("phone");
+			//email = person.getString("email");
+			Intent i = new Intent(this, EmailSenderIntentService.class);
+			//enter organiser's email address
+			person.putString(EmailSenderIntentService.INTENT_INTO_SERVICE, "blackolive333@gmail.com");
+			person.putBoolean(CODE_CONFIRMED, true);
+			i.putExtras(person);
+			startService(i);
+			Log.i(CODE_CONFIRMED_ACTIVITY_TAG, CODE_CONFIRMED);
+			close();
 		}
 		else
 		{
-			Log.i("confirm", "codes do not match: real"+sysCode + " input "+usrCode);
+			final String msg = "ERROR: Verification codes did not match"+ " system gen code: " + sysCode + " user's input code: "+usrCode;
+			Log.e(CODE_CONFIRMED_ACTIVITY_TAG,msg);
+			Toast.makeText(getBaseContext(), "Wrong code entered", Toast.LENGTH_LONG).show();
 		}
+
 	}
-
-
-	private void revert()
+	
+	private void close()
 	{
-		//TODO: once finished whether incorrect or correct just revert back to the TicketActivity. from there the user can either add more 
-		//people OR just return back to the Main
+		Intent i = new Intent(this, TicketActivity.class);
+		startActivity(i);
+		finish();
 	}
-
 }

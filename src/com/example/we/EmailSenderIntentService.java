@@ -1,9 +1,7 @@
 package com.example.we;
 
-import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Random;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -11,7 +9,6 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-
 import android.app.IntentService;
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,16 +19,18 @@ import android.widget.Toast;
 
 public class EmailSenderIntentService extends IntentService {
 	public static final String INTENT_INTO_SERVICE = "INTENT_STARTED";
-	private Handler mainThread;
+
 	private final static String SENDER_EMAIL_ADDRESS = "fmerzadyan@gmail.com";
 	private String RECEIVER_EMAIL_ADDRESS;
 	private Session session;
 	private Message message;
-	private boolean is_message_sent;
+	private boolean isSent;
 	private CodeGenerator gen;
-
-	
-
+	private static final String CODE_VERIFIED_FLAG = "CODE_VERIFIED_FLAG";
+	private static final String CODE_NOT_YET_VERIFIED_FLAG = "CODE_NOT_YET_VERIFIED_FLAG";
+	private Bundle person;
+	private Handler mainThread;
+	private static final String Email_Sender_Intent_Service_TAG = "Email_Sender_Intent_Service";
 	@Override
 	public void onCreate() {
 		super.onCreate();
@@ -45,43 +44,43 @@ public class EmailSenderIntentService extends IntentService {
 
 	@Override
 	protected void onHandleIntent(Intent intent) {
-		//get the data value mapped with this key (INTENT_INTO_SERVICE is the key)
-		//and value (should be user's email address) is passed into "input" String
-		//final String input = intent.getStringExtra(INTENT_INTO_SERVICE);
-		//final String input = intent.getExtras().getString(INTENT_INTO_SERVICE);
-		Bundle person = intent.getExtras();
-		//this.RECEIVER_EMAIL_ADDRESS = intent.getExtras().getString(INTENT_INTO_SERVICE).toString();
-		this.RECEIVER_EMAIL_ADDRESS = person.getString(INTENT_INTO_SERVICE).toString();
-		createSession();
-		createMessage();
-		sendMessage();
+		person = intent.getExtras();
+		//checks the hashmap for the key "CODE_CONFIRMED" to see if it returns true or false
+		if(person.getBoolean(CodeConfirmActivity.CODE_CONFIRMED))
+		{
+			this.RECEIVER_EMAIL_ADDRESS = person.getString(INTENT_INTO_SERVICE).toString();
+			createSession();
+			createMessage(CODE_VERIFIED_FLAG);
+			sendMessage();
+		}
+		else
+		{
+			this.RECEIVER_EMAIL_ADDRESS = person.getString(INTENT_INTO_SERVICE).toString();
+			createSession();
+			createMessage(CODE_NOT_YET_VERIFIED_FLAG);
+			sendMessage();
+			//when the work is done: these 4 lines are to activate the broadcast receiver 
+			Intent i = new Intent();
+			i.setAction(EmailFinishedReceiver.EMAIL_DONE);
+			LocalBroadcastManager m = LocalBroadcastManager.getInstance(this);
+			m.sendBroadcastSync(i);
+			// use mainThread to post this Toast on TicketActivity activity (this IntentService runs on a worker (different) thread)
+			mainThread.post(new Runnable() {            
+				@Override
+				public void run() {
+					Toast.makeText(EmailSenderIntentService.this, "Confirmation email is sent to: "+RECEIVER_EMAIL_ADDRESS+" please check your email.", Toast.LENGTH_LONG).show();   
+				}
+			});
 
-		//when the work is done: these 4 lines are to activate the broadcast receiver 
-		Intent i = new Intent();
-		i.setAction(EmailFinishedReceiver.EMAIL_DONE);
-		LocalBroadcastManager m = LocalBroadcastManager.getInstance(this);
-		m.sendBroadcastSync(i);
-		
-		
-		 // use mainThread to post this Toast on TicketActivity activity (this IntentService runs on a worker (different) thread)
-		mainThread.post(new Runnable() {            
-			@Override
-			public void run() {
-				Toast.makeText(EmailSenderIntentService.this, "Confirmation email is sent to: "+RECEIVER_EMAIL_ADDRESS+" please check your email.", Toast.LENGTH_LONG).show();   
-			}
-		});
-		
-		//once complete: same code sent via email needs to be sent to an activity for matching against
-		Intent transferIntent = new Intent(this, CodeConfirmActivity.class);
-		person.putInt("code", gen.getCode());
-		transferIntent.putExtras(person);
-		startActivity(transferIntent);
-		Log.i("onHandleIntent", "onHandleIntent was called");
+			//once complete: same code sent via email needs to be sent to an activity for matching against
+			Intent transferIntent = new Intent(this, CodeConfirmActivity.class);
+			transferIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			person.putInt("code", gen.getCode());
+			transferIntent.putExtras(person);
+			startActivity(transferIntent);
+			Log.d(Email_Sender_Intent_Service_TAG, "onHandleIntent was called successfully");
+		}
 	}
-
-
-
-
 
 	private void createSession()
 	{
@@ -102,37 +101,58 @@ public class EmailSenderIntentService extends IntentService {
 
 	}
 
-	private void createMessage()
+	private void createMessage(String command)
 	{
-		try
+		final String errorMsg = "ERROR in message creation";
+		final String successMsg = "SUCCESS in message creation";
+		if(command.equals(CODE_VERIFIED_FLAG))
 		{
-			// Create a default MimeMessage object.
-			message = new MimeMessage(session);
-			// Set From: header field of the header.
-			message.setFrom(new InternetAddress(SENDER_EMAIL_ADDRESS));
-			// Set To: header field of the header.
-			message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(RECEIVER_EMAIL_ADDRESS));
-			// Set Subject: header field
-			message.setSubject("Testing Subject");
-			// Send the actual HTML message, as big as you like
-			gen = new CodeGenerator();
-			Log.i("createMessage", "code is: "+gen.getCode());
-			message.setContent("<h1>Confirmation code:</h1>"+gen.code,"text/html");
-					Log.i("createMessage", "message was created");
+			try
+			{
+				message = new MimeMessage(session);
+				message.setFrom(new InternetAddress(SENDER_EMAIL_ADDRESS));
+				message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(RECEIVER_EMAIL_ADDRESS));
+				message.setSubject("WE: Adam and Eve's Wedding: Verification");
+				String code = ""+ person.getInt("code");
+				String forename = person.getString("forename");
+				String surname = person.getString("surname");
+				//int type can only store 10 digits. easy fix was to just as 0 as a prefix to complete phone number
+				String phone = "0" + person.getLong("phone");
+				String email = person.getString("email");
+				message.setContent("<h1>Successful Verification</h1>"+"\n"+code+"\n"+forename+"\n"+surname+"\n"+phone+"\n"+email,"text/html");
+				Log.d(Email_Sender_Intent_Service_TAG, successMsg);
 
-		} catch (MessagingException e) {
-			e.printStackTrace();
-			throw new RuntimeException(e);
+			} catch (MessagingException e) {
+				Log.e(Email_Sender_Intent_Service_TAG, errorMsg);
+				e.printStackTrace();
+				throw new RuntimeException(e);
+			}
+		}
+		else	
+		{
+			try
+			{
+				message = new MimeMessage(session);
+				message.setFrom(new InternetAddress(SENDER_EMAIL_ADDRESS));
+				message.setRecipients(Message.RecipientType.TO,InternetAddress.parse(RECEIVER_EMAIL_ADDRESS));
+				message.setSubject("WE: Adam and Eve's Wedding: Verification");
+				gen = new CodeGenerator();
+				Log.i("createMessage", "code is: "+gen.getCode());
+				message.setContent("<h1>Confirmation code:</h1>"+gen.code,"text/html");
+				Log.d(Email_Sender_Intent_Service_TAG, successMsg);
+			} catch (MessagingException e) {
+				Log.e(Email_Sender_Intent_Service_TAG, errorMsg);
+				e.printStackTrace();
+				throw new RuntimeException(e);
+			}
 		}
 	}
 	private void sendMessage()
 	{
 		try {
-			// Send message
 			Transport.send(message);
-			//set a toast or something
-			is_message_sent=true;
-			Log.i("sendMessage", "message was sent");
+			isSent=true;
+			Log.d(Email_Sender_Intent_Service_TAG, "Message sent");
 		} catch (MessagingException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
@@ -163,10 +183,4 @@ public class EmailSenderIntentService extends IntentService {
 		}
 
 	}
-
-
-
-
-
-
 }

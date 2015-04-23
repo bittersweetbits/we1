@@ -77,10 +77,16 @@
             android:name=".MapActivity"
             android:label="@string/title_activity_map" >
         </activity>
+        <activity
+            android:name=".FAQActivity"
+            android:label="@string/title_activity_faq" >
+        </activity>
 
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCFSAYBHf9m0KIA6MjfhSZ0hXoIw-9Yvw0" />
+
+        
     </application>
 
 </manifest>

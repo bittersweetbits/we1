@@ -7,6 +7,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_map">Map</string>
     <string name="action_map">Map</string>
+    <string name="action_get_main">Main</string>
     <string name="wedding_brief">        A familial unmissable ceremononial event where 
         Adam Winter and Eve Noel unite in marriage. 
         The event will involve activities to engage 
@@ -31,5 +32,44 @@
     <string name="title_activity_code_confirm">CodeConfirmActivity</string>
     <string name="start_location_hint">Enter a starter location</string>
     <string name="load_direction">GET DIRECTIONS</string>
-
+    <string name="share">SHARE</string>
+    <string name="map_location_content_description">Location of venue</string>
+    <string name="title_activity_faq">FAQ</string>
+    <string name="action_faq">FAQ</string>
+    <string name="faq_content">FAQ</string>
+    <string name="are_you_coming">Are you coming</string>
+    <string name="are_you_coming1">1. Click on \'Get Ticket\' in the menu</string>
+    <string name="are_you_coming2">2. Fill out the form with valid personal details</string>
+    <string name="are_you_coming3">3. Click on \'Get Tickets\' button</string>
+    <string name="are_you_coming4">4. Check the inbox of the email you have given for a confirmation code</string>
+	<string name="are_you_coming5">5. Copy this code</string>
+	<string name="are_you_coming6">6. Make sure you\'re on the \'Confirmation\' page and paste this code into the text box where it is specified</string>
+	<string name="are_you_coming7">7. Click on the button</string>
+	<string name="bring_others">What if I want to bring others (kids/adults)?</string>
+	<string name="bring_others1">You can simply fill in the form in their behalf and only add your contact details.</string>
+	<string name="find_address">How do I find the address?</string>
+	<string name="find_address1">The address is stated in the main screen, click on the name of the venue to go to their website and the address for google maps via web browser. There is also an interactive map in the menu.</string>
+	<string name="no_email">What if I don’t have an email?</string>
+	<string name="no_email1">You can put down someone else\’s email as long as you can retrieve the code for verification.</string>
+	<string name="code_exp">How long do I have to verify my sign-up?</string>
+	<string name="code_exp1">The code expires as soon as you shut down this app.</string>
+	<string name="change_mind">What if I want to change my mind about coming?</string>
+	<string name="change_mind1">Then simply call this number: 0148 443 8890. </string>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 </resources>

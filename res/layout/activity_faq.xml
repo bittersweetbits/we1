@@ -1,0 +1,159 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/are_you_coming"
+            style="@style/clickable_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/are_you_coming" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/are_you_coming1"
+            style="@style/main_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/are_you_coming1" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/are_you_coming2"
+            style="@style/main_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/are_you_coming2" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/are_you_coming3"
+            style="@style/main_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/are_you_coming3" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/are_you_coming4"
+            style="@style/main_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/are_you_coming4" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/are_you_coming5"
+            style="@style/main_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/are_you_coming5" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/are_you_coming6"
+            style="@style/main_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/are_you_coming6" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/are_you_coming7"
+            style="@style/main_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/are_you_coming7" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/bring_others"
+            style="@style/clickable_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/bring_others" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/bring_others1"
+            style="@style/main_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bring_others1" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/find_address"
+            style="@style/clickable_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/find_address" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/find_address1"
+            style="@style/main_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/find_address1" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/no_email"
+            style="@style/clickable_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no_email" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/no_email1"
+            style="@style/main_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no_email1" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/code_exp"
+            style="@style/clickable_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/code_exp" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/code_exp1"
+            style="@style/main_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/code_exp1" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/change_mind"
+            style="@style/clickable_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/change_mind" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/change_mind1"
+            style="@style/main_text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/change_mind1" >
+        </TextView>
+    </LinearLayout>
+
+</ScrollView>
