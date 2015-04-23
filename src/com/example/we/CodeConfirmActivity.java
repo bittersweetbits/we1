@@ -59,6 +59,7 @@ public class CodeConfirmActivity extends BaseActivity  implements OnClickListene
 			i.putExtras(person);
 			startService(i);
 			Log.i(CODE_CONFIRMED_ACTIVITY_TAG, CODE_CONFIRMED);
+			Toast.makeText(getBaseContext(), "Your place is confirmed", Toast.LENGTH_LONG).show();
 			close();
 		}
 		else
